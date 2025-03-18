@@ -12,6 +12,7 @@ export { default as Collection } from '../pages/Collection'
 export { default as NotFound } from '../pages/NotFound'
 
 // COMPONENTS
+export { default as Navbar } from './Navbar'
 
 
 // UI
