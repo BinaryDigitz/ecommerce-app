@@ -13,6 +13,7 @@ export { default as NotFound } from '../pages/NotFound'
 
 // COMPONENTS
 export { default as Navbar } from './Navbar'
+export { default as Hero } from './Hero'
 
 
 // UI
