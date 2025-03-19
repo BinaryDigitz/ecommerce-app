@@ -1,10 +1,11 @@
 import React from 'react'
-import { Hero } from '../components/exportComp'
+import { Hero, LatestCollection } from '../components/exportComp'
 
 function Home() {
   return (
     <div>
       <Hero />
+      <LatestCollection />
     </div>
   )
 }

@@ -14,6 +14,14 @@ export { default as NotFound } from '../pages/NotFound'
 // COMPONENTS
 export { default as Navbar } from './Navbar'
 export { default as Hero } from './Hero'
+export { default as Title } from './Title'
+export { default as ProductCart } from './ProductCart'
+export { default as LatestCollection } from './LatestCollection'
 
 
 // UI
+
+
+// CONTEXT
+export { default as ShopContext } from '../context/ShopContext'
+export { default as AppContext } from '../context/AppContext'
