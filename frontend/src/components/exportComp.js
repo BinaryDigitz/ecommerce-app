@@ -16,6 +16,8 @@ export { default as Navbar } from './Navbar'
 export { default as Hero } from './Hero'
 export { default as Title } from './Title'
 export { default as ProductCart } from './ProductCart'
+export { default as BestSeller } from './BestSeller'
+export { default as Newsletter } from './Newsletter'
 export { default as LatestCollection } from './LatestCollection'
 
 

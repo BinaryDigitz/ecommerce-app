@@ -17,10 +17,10 @@ function LatestCollection() {
                     eveniet!</p>
             </div>
             {/* RENDERING PRODUCS */}
-            <div className="grid grid-cols-2 sm: grid-cols3 md:grid-cols-4 lg:grid-cols5 gap-4 gap-y-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
                 {
-                    latestProducts.map(product => ( 
-                        < ProductCart key={product.id} product={product} />
+                    latestProducts.map((product, index) => ( 
+                        < ProductCart key={ index} product={product} />
                     ))
                 }
             </div>
