@@ -1,5 +1,5 @@
 import React from 'react'
-import { About, Cart, Collection, Contact, NotFound, Home, Login, Order, PlaceOrder, Product, Navbar } from './components/exportComp'
+import { About, Cart, Collection, Contact, NotFound, Home, Login, Order, PlaceOrder, Product, Navbar, Footer } from './components/exportComp'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -23,6 +23,9 @@ function App() {
 
         </Routes>
       </main>
+      <footer>
+        <Footer />
+      </footer>
 
     </div>
   )
