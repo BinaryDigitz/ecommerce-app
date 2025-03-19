@@ -1,4 +1,5 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
 import { About, Cart, Collection, Contact, NotFound, Home, Login, Order, PlaceOrder, Product, Navbar, Footer, SearchBar } from './components/exportComp'
 import { Routes, Route } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ function App() {
         <SearchBar />
       </header>
       <main>
+        <ToastContainer />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />

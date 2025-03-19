@@ -2,14 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ShopContext from '../context/ShopContext';
 import { assets } from '../assets/assets';
+import { toast } from 'react-toastify';
 import DisplayRelatedProduct from '../components/DisplayRelatedProduct';
 
 function Product() {
   const { id } = useParams();
- const { products, currency } = useContext(ShopContext);
+ const { products, currency, addToCart } = useContext(ShopContext);
  const [ productData, setProductData ] = useState(false);
  const [ image, setImage ] = useState('');
  const [size, setSize ] = useState('')
+ const [errorMessage, setErrorMessage ] = useState('')
 
  async function fetchProductData(){
 products.map((item) => {
@@ -24,7 +26,18 @@ products.map((item) => {
   fetchProductData()
  },[id]);
 
-
+ const disableButton = size.length === 0
+ function handleAddToCart( id, size){
+  if(disableButton){
+    setErrorMessage('Please select size.')
+    toast.error('Please select size.')
+  }
+  else{
+    setErrorMessage('')
+    addToCart(id, size)
+    toast.success('Added to cart successfully.')
+  }
+ }
   return productData ? (
     <section className='border-t-2 pt-10  transition-opacity ease-in duration-500 opacity-100'>
       {/* ...........product data */}
@@ -64,8 +77,15 @@ products.map((item) => {
                   ))
                 }
             </div>
+          <div className='h-1'>
+          {
+            errorMessage.length > 0 && (
+              <p className='text-sm pl-3 text-red-500'>{errorMessage}</p>
+            )
+          }
           </div>
-          <button className='bg-black hover:opacity-90 cursor-pointer text-white px-8 py-3 active:bg-gray-700 trans'>ADD TO CART</button>
+          </div>
+          <button  onClick={() => handleAddToCart(productData._id, size)} className='bg-black hover:opacity-90 cursor-pointer text-white px-8 py-3 active:bg-gray-700 trans'>ADD TO CART</button>
           <hr className='mt-8 sm:-4/5'/>
           <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
             <p>100% Original product.</p>
