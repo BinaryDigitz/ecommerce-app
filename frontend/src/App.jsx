@@ -19,7 +19,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/order' element={<Order />} />
           <Route path='/place-order' element={<PlaceOrder />} />
-          <Route path='/product/:productId' element={<Product />} />
+          <Route path='/product/:id' element={<Product />} />
           <Route path='*' element={<NotFound />} />
 
         </Routes>
