@@ -1,0 +1,6 @@
+/backend/node_modules
+/backend/*.json
+/node_modules
+/backend/.env.development.local
+/backend/.env.production.local
+backend/package.json
