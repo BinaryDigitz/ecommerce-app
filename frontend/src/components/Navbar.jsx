@@ -31,7 +31,9 @@ function Navbar() {
             <div className="flex items-center gap-6">
                 <img onClick={() => setShowSearch(!showSearch)} src={assets.search_icon} className='w-5 cursor-pointer hover:text-black' alt="search icon" />
                 <div className='group relative'>
-                    <img src={assets.profile_icon} alt="profile" className='w-5 cursor-pointer hover:text-black' />
+                    <Link to='/login'>
+                        <img src={assets.profile_icon} alt="profile" className='w-5 cursor-pointer hover:text-black' />
+                    </Link>
                     <div className="absolute group-hover:block hidden dropdown-menu right-0 p-4">
                         <div className='flex flex-col w-36 py-3 px-5 bg-slate-100 text-slate-500'>
                             <p className="cursor-pointer hover:text-black">My Profile</p>
