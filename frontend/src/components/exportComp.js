@@ -20,6 +20,7 @@ export { default as BestSeller } from './BestSeller'
 export { default as Newsletter } from './Newsletter'
 export { default as SearchBar } from './SearchBar'
 export { default as Footer } from './Footer'
+export { default as CartTotal } from './CartTotal'
 export { default as DisplayRelatedProduct } from './DisplayRelatedProduct'
 export { default as LatestCollection } from './LatestCollection'
 

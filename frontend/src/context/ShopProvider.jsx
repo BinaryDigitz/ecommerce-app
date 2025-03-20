@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ShopContext from './ShopContext'
 import { products } from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 function ShopProvider({ children }) {
+    const navigate = useNavigate()
     const [search, setSearch] = useState('')
     const [showSearch, setShowSearch] = useState(false)
     const [ cartItems, setCartItems ] = useState([])
@@ -24,7 +26,7 @@ async function addToCart (id, size ){
         cartData[id] = {}
         cartData[id][size] = 1;
     }
-    setCartItems(cartData)
+    setCartItems(cartData);
 
 };
 function getCartCount(){
@@ -44,7 +46,30 @@ function getCartCount(){
         }
     }
  return totalCount
-}
+};
+async function updateQuantity(id, size, quantity){
+let cartData = structuredClone(cartItems);
+cartData[id][size] = quantity;
+setCartItems(cartData)
+};
+ function getCartAmount (){
+    let totalAmount = 0;
+    for(const items in cartItems){
+        let itemInfo = products.find(product => product._id === items);
+        for(const item in cartItems[items]){
+            try{
+                if(cartItems[items][item] > 0){
+                    totalAmount += itemInfo.price * cartItems[items][item]
+                }
+            }
+            catch(err){
+                console.log(err);
+                
+            }
+        }
+    }
+    return totalAmount
+};
 
     const values = {
         products,
@@ -56,7 +81,10 @@ function getCartCount(){
         setShowSearch,
         addToCart,
         cartItems,
-        getCartCount
+        getCartCount,
+        updateQuantity,
+        getCartAmount,
+        navigate
     }
     return (
         <ShopContext.Provider value={values}>
