@@ -7,6 +7,7 @@ import { JWT_SECRET } from './config/env.js'
 import errorHandler from './middleware/errorHandler.js'
 import connectCloudnary from './config/cloudinary.js'
 import userRouter from './routes/user.route.js'
+import productRouter from './routes/product.route.js'
 
 
 export const app = express()
@@ -29,7 +30,8 @@ app.use(cookieParser())
 app.get('/', (req, res) =>{
     return res.json({ statusCode: 200, message: 'Hello world'})
 });
-app.use('/api/auth', userRouter)
+app.use('/api/auth', userRouter);
+app.use('/api/products', productRouter);
 
 // ......Error handler
 app.use(errorHandler)
