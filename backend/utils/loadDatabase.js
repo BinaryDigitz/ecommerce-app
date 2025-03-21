@@ -7,10 +7,12 @@ function loadDatabase(){
     .then(() =>{
         console.log('Connected to Database.....');
         app.listen(PORT, () =>{
-            console.log(`Server is running at http://localhost:${PORT}`);
-            
+            console.log(`Forever is running at http://localhost:${PORT}`);
         })
         
+    })
+    .catch((ex) =>{
+        console.log('Failed to connect to the database......', ex.message);
     })
 };
 export default loadDatabase
