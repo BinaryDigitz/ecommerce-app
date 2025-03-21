@@ -15,7 +15,7 @@ price:{
     type:Number,
     requird: true
 },
-image:{
+images:{
     type:Array,
     requird: true
 },
