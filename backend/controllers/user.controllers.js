@@ -1,7 +1,9 @@
 import UserModel from '../models/user.model.js'
 import Joi from 'joi';
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import asyncMiddleware from '../middleware/asyncMiddleware.js';
+import { ADMIN_EMAIL, ADMIN_PASSWORD, JWT_SECRET } from '../config/env.js';
 
 
 
@@ -47,7 +49,17 @@ export const register = asyncMiddleware( async ( req, res) => {
 
 // ADMIN LOGIN
 export const adminLogin = asyncMiddleware( async ( req, res) =>{
-    
+    const { error } = validateLogin(req.body)
+    if(error) return res.json({ success: false, msessage: error.details[0].message, statusCode: 400});
+
+    const { email, password } = req.body
+    if( email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD ){
+        return res.json({ success:false, statusCode: 400, message: 'Invalid Email or Password.'})
+    };
+    const token = jwt.sign( email + password , JWT_SECRET)
+
+    res.cookie('admin-token', token, { expiresIn: '1d'})
+    .json({ success: true, statusCode: 200, message: 'Welcome admin', admin_token: token})
 
 });
 
