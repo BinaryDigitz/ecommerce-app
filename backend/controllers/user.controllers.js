@@ -49,8 +49,8 @@ export const register = asyncMiddleware( async ( req, res) => {
 
 // ADMIN LOGIN
 export const adminLogin = asyncMiddleware( async ( req, res) =>{
-    const { error } = validateLogin(req.body)
-    if(error) return res.json({ success: false, msessage: error.details[0].message, statusCode: 400});
+    // const { error } = validateLogin(req.body)
+    // if(error) return res.json({ success: false, msessage: error.details[0].message, statusCode: 400});
 
     const { email, password } = req.body
     if( email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD ){
