@@ -16,7 +16,7 @@ export const app = express()
     process.exit(1)
  }
  const corsOrigin ={
-    origin: ['http://localhost:5174'],
+    origin: ['http://localhost:5174', 'http://localhost:5173'],
     optionSuccessStatus: 200
 }
 

@@ -3,6 +3,7 @@ import AdminContext from "./AdminContext";
 
 function AdminProvider({ children }) {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const currency = '$'
    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '' );
 
  useEffect(()=>{
@@ -12,6 +13,7 @@ function AdminProvider({ children }) {
       backendUrl,
       token,
       setToken,
+      currency,
 
     }
   return (

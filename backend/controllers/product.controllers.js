@@ -7,7 +7,7 @@ import Joi from 'joi';
 // add product
 export const createProduct = asyncMiddleware( async ( req, res ) =>{
     const { error} = validateProduct(req.body)
-    if(error ) return res.json({ success: false, statusCode: 400, message: error.details[0].message})
+    // if(error ) return res.json({ success: false, statusCode: 400, message: error.details[0].message})
     // destructure the form data
  const { name, description, price, category, subCategory, sizes, bestseller } = req.body;
  const existProduct = await ProductModel.findOne({name})
@@ -37,12 +37,11 @@ const productData = {
      description,
      price: Number(price),
      category, subCategory,
-    //  sizes:JSON.parse(sizes),
+     sizes:JSON.parse(sizes),
      bestseller: bestseller === 'true' ? true: false,
      images: imagesUrl,
      date: Date.now()
 }
-console.log(productData);
 
 let product = new ProductModel(productData);
 await product.save()
@@ -60,8 +59,11 @@ export const getProducts = asyncMiddleware( async ( req, res ) =>{
 
 // remove product
 export const deleteProduct = asyncMiddleware( async ( req, res ) =>{
+    
     const { id } = req.body
-    const product = await ProductModel.findOne({id})
+    
+    if(!id) return res.json({ success:false, message: 'Please provide ID', statusCode:400})
+    const product = await ProductModel.findOne({_id: id})
     if(!product) return res.json({ success: false, messge: 'Product not found', statusCode: 404})
     await ProductModel.findByIdAndDelete( id );
     res.json({
