@@ -10,15 +10,15 @@ const cpUpload = upload.fields([
     { name: 'image2', maxCount: 1 },
     { name: 'image3', maxCount: 1 },
     { name: 'image4', maxCount: 1 }
-])
+]);
 
 productRouter.post('/add', cpUpload, createProduct);
 
 productRouter.get('/list', getProducts);
 
-productRouter.get('/single/:id', getProduct);
+productRouter.get('/single', getProduct);
 
-productRouter.delete('/remove/:id', deleteProduct);
+productRouter.delete('/remove', deleteProduct);
 
 productRouter.put('/update', updateProduct);
 

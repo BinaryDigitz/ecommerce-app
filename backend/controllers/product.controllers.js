@@ -53,11 +53,22 @@ await product.save()
 
 // get all products
 export const getProducts = asyncMiddleware( async ( req, res ) =>{
+ const products = await ProductModel.find({});
+ res.json({ success: true, products })
 
 });
 
 // remove product
 export const deleteProduct = asyncMiddleware( async ( req, res ) =>{
+    const { id } = req.body
+    const product = await ProductModel.findOne({id})
+    if(!product) return res.json({ success: false, messge: 'Product not found', statusCode: 404})
+    await ProductModel.findByIdAndDelete( id );
+    res.json({
+        success: true,
+        statusCode:202,
+        message:'Product deleted successfully.'
+    })
 
 });
 
