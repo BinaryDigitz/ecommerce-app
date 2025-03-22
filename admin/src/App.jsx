@@ -32,9 +32,9 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/list" element={<List />} />
-              <Route path="/add" element={<Add />} />
-              <Route path="/orders" element={<Orders />} />
+              <Route path="/list" element={<List token={token} />} />
+              <Route path="/add" element={<Add token={token} />} />
+              <Route path="/orders" element={<Orders token={token} />} />
               <Route path="/login" element={<Login />} />
             </Routes>
           </main>
