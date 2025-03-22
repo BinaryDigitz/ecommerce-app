@@ -3,7 +3,7 @@ import asyncMiddleware from './asyncMiddleware.js'
 import { JWT_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD } from '../config/env.js'
 
 const adminAuth = asyncMiddleware( async ( req, res, next) =>{
-    const admin_token = req.headers;
+    const admin_token = req.headers.token;
     if(!admin_token) return res.json({ success: false, message: 'Unauthorized', statusCode: 403})
 
    const decoded =  jwt.verify(admin_token, JWT_SECRET)

@@ -25,19 +25,21 @@ function App() {
             <Navbar />
             <hr />
           </header>
-          <aside className="flex w-full">
-            <Sidebar />
-          </aside>
+          <section className="flex  w-full">
+            <aside className="w-52 border">
+              <Sidebar />
+            </aside>
             <ToastContainer />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/list" element={<List token={token} />} />
-              <Route path="/add" element={<Add token={token} />} />
-              <Route path="/orders" element={<Orders token={token} />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </main>
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/list" element={<List token={token} />} />
+                <Route path="/add" element={<Add token={token} />} />
+                <Route path="/orders" element={<Orders token={token} />} />
+                <Route path="/login" element={<Login />} />
+              </Routes>
+            </main>
+          </section>
           <footer>footer</footer>
         </>
       )}
