@@ -74,6 +74,13 @@ export const deleteProduct = asyncMiddleware( async ( req, res ) =>{
 
 // get Product
 export const getProduct = asyncMiddleware( async ( req, res ) =>{
+    const { id } = req.body;
+    if(!id) return res.json({ success: false, message: 'Please provide product ID', statusCode: 400});
+
+ const product = await ProductModel.findOne({ _id: id });
+ if(!product) return res.json({success: false, message: 'Product not found', statusCode: 404});
+
+ res.json({ success: true, statusCode: 200, message: 'Product sent successfully', product})
 
 });
 
