@@ -31,7 +31,7 @@ function Footer() {
             </div>
             <div>
                 <hr />
-                <p className="py-5 text-sm text-center">Copy0right 2024@ forever.com - All Rights Reserved</p>
+                <p className="py-5 text-sm text-center">Copy0right 2024@ forever.com - All Rights Reserved | Developed by: <a className='text-blue-700 underline' href='https://banginic-1.onrender.com ' target='blank'>Banginic</a> </p>
             </div>
 
         </section>

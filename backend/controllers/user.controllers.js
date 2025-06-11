@@ -23,7 +23,7 @@ export const login = asyncMiddleware( async ( req, res) => {
     const token = user.generateToken()
     const { password: pass, ...rest } = user._doc;
     res.cookie('token', token, { expiresIn: '3d'})
-    .json({ success: true, message: 'User logged in successfully.', user: rest});
+    .json({ success: true, message: ' login successful.', user_token: token , user: rest});
 });
 
 // REGISTER USER

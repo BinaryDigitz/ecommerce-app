@@ -7,17 +7,20 @@ import DisplayRelatedProduct from "../components/DisplayRelatedProduct";
 
 function Product() {
   const { id } = useParams();
+  console.log(id);
+  
   const { products, currency, addToCart } = useContext(ShopContext);
-  const [productData, setProductData] = useState(false);
+  const [productData, setProductData] = useState([]);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   async function fetchProductData() {
     products.map((item) => {
+      
       if (item._id === id) {
         setProductData(item);
-        setImage(item.image[0]);
+        setImage(item.images[0]);
         return null;
       }
     });
@@ -37,14 +40,14 @@ function Product() {
       toast.success("Added to cart successfully.");
     }
   }
-  return productData ? (
+  return productData.length !==0 ? (
     <section className="border-t-2 pt-10  transition-opacity ease-in duration-500 opacity-100">
       {/* ...........product data */}
       <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
         {/* Product Images */}
         <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
           <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
-            {productData.image.map((item, index) => (
+            {productData.images.map((item, index) => (
               <img
                 onClick={() => setImage(item)}
                 src={item}
