@@ -20,7 +20,7 @@ function Hero() {
 
       </div>
       {/* HERO RIGHT */}
-      <img src={assets.hero_img} className='w-full sm:w-1/2' alt="hero image" />
+      <img src={assets.hero_img} className='w-full sm:w-1/2' alt="hero image" loading='lazy'/>
 
 
     </div>
